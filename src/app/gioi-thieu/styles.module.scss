@@ -1,0 +1,78 @@
+.gioithieu_container {
+
+    .wrap_gioithieu {
+        // border: 1px solid #ccc;
+        min-height: 200px;
+        width: min(800px, 100%);
+        margin: 0 auto;
+        margin-bottom: 100px;
+
+        .title {
+            color: #fff;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .sub {
+            margin-top: 20px;
+            padding: 10px 0;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .title2 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #cc60bf;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .wrap_quymo {
+            display: flex;
+            margin-top: 20px;
+            border-bottom: 1px solid #222;
+            padding: 10px 0 20px;
+
+            .wrap_quymo_item {
+                width: 33%;
+
+                .wrap_quymo_image {
+                    width: 50px;
+                    height: 50px;
+
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    margin: 0 auto;
+
+                    &.img1 {
+                        background-image: url('../../../public/image/banner/ic_1.png');
+                    }
+
+                    &.img2 {
+                        background-image: url('../../../public/image/banner/ic_2.png');
+                    }
+
+                    &.img3 {
+                        background-image: url('../../../public/image/banner/ic_3.png');
+                    }
+                }
+
+                .wrap_quymo_text {
+                    color: #fff;
+                    text-align: center;
+                    margin-top: 10px;
+                }
+
+                .title {
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: #cc60bf;
+                    text-align: center;
+
+                }
+            }
+        }
+    }
+}
