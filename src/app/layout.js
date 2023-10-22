@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Script } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className} suppressHydrationWarning={true}>
+        {children}
+        <script src="https://kit.fontawesome.com/a19bb8670a.js" />
+      </body>
     </html>
   )
 }

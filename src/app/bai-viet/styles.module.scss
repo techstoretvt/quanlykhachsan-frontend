@@ -1,0 +1,45 @@
+.baiviet_container {
+    .baiviet_content {
+        width: min(1000px, 100%);
+        margin: 20px auto 50px;
+        min-height: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px 0;
+
+        .wrap_baiviet {
+            position: relative;
+            min-height: 100px;
+            padding: 10px;
+
+            .anhBaiViet {
+                width: 100%;
+                height: auto;
+                cursor: pointer;
+            }
+
+            .tieuDe {
+                color: #fff;
+                font-weight: bold;
+                font-size: 18px;
+                text-transform: capitalize;
+                margin-top: 10px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .thoiGian {
+                color: #ccc;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            .moTa {
+                color: #fff;
+                font-size: 14px;
+                margin-top: 6px;
+            }
+
+        }
+    }
+}

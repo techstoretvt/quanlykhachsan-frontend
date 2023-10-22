@@ -1,0 +1,59 @@
+.khuyenmai_container {
+    .khuyenmai_content {
+        width: min(1000px, 100%);
+        margin: 0 auto;
+        min-height: 200px;
+        margin-bottom: 50px;
+
+        .anh1 {
+            position: relative;
+            aspect-ratio: 2/1;
+            background-image: url('../../../public/image/khuyen_mai/anh1.png');
+            background-size: cover;
+
+            .text {
+                position: absolute;
+                color: #fff;
+                font-size: 26px;
+                bottom: 0;
+                width: 100%;
+                box-sizing: border-box;
+                font-weight: bold;
+                left: 0;
+                padding: 10px 20px;
+                background-color: #333;
+                text-align: center;
+            }
+        }
+
+        .list_khuyenmai {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 50px;
+
+            .item_khuyenmai {
+                width: 33%;
+                padding: 10px;
+
+
+                .image {
+                    aspect-ratio: 2/1;
+                    background-size: cover;
+                }
+
+                .title {
+                    padding: 10px 0;
+                    color: #9e3dc2;
+                    font-size: 18px;
+                }
+
+                .desc {
+                    color: #fff;
+                    font-size: 12px;
+                    text-align: justify;
+                }
+            }
+
+        }
+    }
+}

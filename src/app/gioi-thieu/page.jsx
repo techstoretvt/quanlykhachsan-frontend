@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import Banner from '@/components/banner/banner'
+import Footer from '@/components/footer/Footer'
 
 const ds_khachsan = [
     {
@@ -72,20 +73,24 @@ export default function index() {
                 </div>
 
                 <table border={1} style={{ width: '100%', marginTop: '50px' }}>
-                    <tr>
-                        <th>STT</th>
-                        <th>kHÁCH SẠN/ RESORT</th>
-                        <th>ĐỊA CHỈ</th>
-                    </tr>
-                    {
-                        ds_khachsan.map((item, index) => (
-                            <tr key={index}>
-                                <td>{index + 1}</td>
-                                <td>{item.ten}</td>
-                                <td>{item.diachi}</td>
-                            </tr>
-                        ))
-                    }
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>kHÁCH SẠN/ RESORT</th>
+                            <th>ĐỊA CHỈ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            ds_khachsan.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{item.ten}</td>
+                                    <td>{item.diachi}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
                 </table>
 
                 <div className={styles.sub}>
@@ -126,6 +131,7 @@ export default function index() {
                 </div>
 
             </div>
+            <Footer />
         </div >
     )
 }

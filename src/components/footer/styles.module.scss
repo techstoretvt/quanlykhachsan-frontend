@@ -1,0 +1,52 @@
+.footer_container {
+    min-height: 200px;
+    border: 1px solid red;
+    background: linear-gradient(to right, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
+
+    .group {
+
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+
+        .list {
+            padding: 10px;
+            border-bottom: 1px solid #fff;
+
+            .title {
+                color: #fff;
+                font-size: 24px;
+            }
+
+            .wrap {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .text {
+                    color: #fff;
+                    font-size: 14px;
+                }
+
+                .wrap_input {
+                    background-color: #fff;
+                    padding-right: 10px;
+
+                    input {
+                        border: none;
+                        outline: none;
+                        padding: 6px 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .copyright {
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 14px;
+    }
+}

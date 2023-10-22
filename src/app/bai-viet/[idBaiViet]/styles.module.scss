@@ -1,0 +1,14 @@
+.ChiTietBaiViet_container {
+    background-color: #fff;
+
+    .ChiTietBaiViet_content {
+        margin: 20px auto 50px;
+        width: min(1000px, 100%);
+        min-height: 200px;
+        border: 1px solid #fff;
+
+        img {
+            max-width: 100%;
+        }
+    }
+}

@@ -1,23 +1,24 @@
 import React from 'react'
+import Link from 'next/link'
 import styles from './styles.module.scss'
 
-export default function index() {
+export default function Header() {
     return (
         <header className={styles.header_container}>
-            <div className={styles.logo}></div>
+            <Link href={'/'} className={styles.logo}></Link>
             <div className={styles.list_item}>
-                <div className={styles.item}>
+                <Link href={'/gioi-thieu'} className={styles.item}>
                     <div className={styles.item_text}>Giới thiệu</div>
-                </div>
-                <div className={styles.item}>
+                </Link>
+                <Link href={"/khuyen-mai"} className={styles.item}>
                     <div className={styles.item_text}>Khuyến mãi</div>
-                </div>
-                <div className={styles.item}>
+                </Link>
+                <Link href={'/bai-viet'} className={styles.item}>
                     <div className={styles.item_text}>blog</div>
-                </div>
-                <div className={styles.item}>
+                </Link>
+                <Link href={'/lien-he'} className={styles.item}>
                     <div className={styles.item_text}>Liên hệ</div>
-                </div>
+                </Link>
             </div>
         </header>
     )
