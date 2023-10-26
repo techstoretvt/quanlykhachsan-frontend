@@ -1,6 +1,11 @@
 import jwt_decode from "jwt-decode";
 
+// import Router from 'next/router'
 
+// Router.push({
+//     pathname: '/search',
+//     query: { keyword: 'this way' },
+// })
 
 
 
@@ -125,6 +130,12 @@ function formatDate(dateTimeString) {
     return formattedDateTime;
 }
 
+const converNumberToMoney = (number) => {
+
+    return new Intl.NumberFormat("ja-JP").format(number)
+
+}
+
 
 export {
     variables,
@@ -133,5 +144,6 @@ export {
     renderAvatarUser,
     renderAvatarUser_url,
     decode_token,
-    formatDate
+    formatDate,
+    converNumberToMoney
 }

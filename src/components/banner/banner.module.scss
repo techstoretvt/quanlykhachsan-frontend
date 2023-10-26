@@ -1,12 +1,12 @@
 .banner_container {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     background-image: url('../../../public/image/banner/anh-banner.jpg');
     margin-bottom: 200px;
 
     .from_dat_lich {
         position: absolute;
-        width: 80%;
+        width: min(1000px, 100%);
         min-height: 200px;
         border: 10px solid rgb(176, 35, 169);
         border-radius: 6px;

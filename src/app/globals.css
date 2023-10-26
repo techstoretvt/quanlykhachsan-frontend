@@ -13,3 +13,15 @@ td {
 * {
     box-sizing: border-box;
 }
+
+.TimPhong_container .slick-prev,
+.Modal_MoreInfo .slick-prev {
+    left: 5px !important;
+    z-index: 1;
+}
+
+.TimPhong_container .slick-next,
+.Modal_MoreInfo .slick-next {
+    right: 5px !important;
+    z-index: 1;
+}

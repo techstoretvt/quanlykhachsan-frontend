@@ -1,0 +1,9 @@
+.ThongTinDatPhong_container {
+
+    >.ThongTinDatPhong_content {
+        min-height: 200px;
+        width: min(1000px, 100%);
+        margin: 0 auto 50px;
+        border: 1px solid #ccc;
+    }
+}
