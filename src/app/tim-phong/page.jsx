@@ -5,9 +5,9 @@ import styles from './styles.module.scss'
 import Banner from '@/components/banner/banner'
 import Footer from '@/components/footer/Footer'
 import { useSearchParams } from 'next/navigation'
-import { getDanhSachPhong, datPhongKs, getKhachHangBySdt } from '../../services/api';
+import { getDanhSachPhong, datPhongKs, getKhachHangBySdt, datPhongKsLoai2, datPhongKsLoai3 } from '../../services/api';
 import swal from 'sweetalert'
-import { Button, Modal, DatePicker, Input, Spin } from 'antd';
+import { Button, Modal, DatePicker, Input, Spin, Select } from 'antd';
 import Image from 'next/image'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -376,6 +376,11 @@ export default function TimPhong() {
     const [email, setEmail] = useState('')
     const [isLoadingDatPhong, setIsLoadingDatPhong] = useState(false)
     const [isLoadingGetUser, setIsLoadingGetUser] = useState(false)
+    const [loadiThanhToan, setLoaiThanhToan] = useState('1')
+    const [fileAnhTT, setFileAnhTT] = useState(null);
+    const [urlAnhTT, setUrlAnhTT] = useState('')
+    const [openModalTTLoai3, setOpenModalTTLoai3] = useState(false)
+    const [isLoadingModalTT, setIsLoadingModalTT] = useState(false)
 
     useEffect(() => {
         handleGetListPhong()
@@ -406,9 +411,18 @@ export default function TimPhong() {
     }
 
     const addDsDaChon = (newItem) => {
+        console.log(newItem);
         let arr = [...dsDaChon]
-        arr.push(newItem)
-        setDsDaChon(arr)
+        let check = true
+        arr.forEach(item => {
+            if (item.idPhong === newItem.idPhong) check = false
+        })
+
+        if (check) {
+
+            arr.push(newItem)
+            setDsDaChon(arr)
+        }
     }
 
     const deleteDsDaChonByIndex = (index) => {
@@ -460,10 +474,31 @@ export default function TimPhong() {
         }
     }
 
+    const handleDatPhong = () => {
+        if (loadiThanhToan === '1') {
+            handleDatPhongLoai1()
+        }
+        else if (loadiThanhToan === '2') {
+            handleDatPhongPaypal()
+        }
+        else {
+            //check value
+            if (!timeStart || !timeEnd || !sdt || !hoTen || !email) {
+                swal("Khoan!", 'Vui lòng điền đầy đủ thông tin', "warning");
+                return
+            }
+            setOpenModalTTLoai3(true)
 
-    const handleDatPhong = async () => {
+            //open modal
+        }
+    }
+
+    const handleDatPhongLoai1 = async () => {
         if (isLoadingDatPhong) return
-        if (!timeStart || !timeEnd || !sdt || !hoTen || !email) { }
+        if (!timeStart || !timeEnd || !sdt || !hoTen || !email) {
+            swal("Khoan!", 'Vui lòng điền đầy đủ thông tin', "warning");
+            return
+        }
 
         let arrIdPhong = dsDaChon.map(item => item.idPhong)
         setIsLoadingDatPhong(true)
@@ -479,7 +514,7 @@ export default function TimPhong() {
         console.log(res);
         if (res?.errCode === 0) {
             swal("Success", 'Đặt phòng thành công', "success");
-            openModalDatPhong(false)
+            setOpenModalDatPhong(false)
             setDsDaChon([])
         }
         else {
@@ -492,7 +527,91 @@ export default function TimPhong() {
 
     }
 
+    const handleDatPhongPaypal = async () => {
+        if (isLoadingDatPhong) return
+        if (!timeStart || !timeEnd || !sdt || !hoTen || !email) {
+            swal("Khoan!", 'Vui lòng điền đầy đủ thông tin', "warning");
+            return
+        }
 
+        let arrIdPhong = dsDaChon.map(item => item.idPhong)
+        setIsLoadingDatPhong(true)
+
+        let res = await datPhongKsLoai2({
+            idPhong: arrIdPhong || [],
+            timeStart,
+            timeEnd,
+            hoTen,
+            email,
+            sdt
+        })
+
+        console.log("paypal: ", res);
+        if (res?.errCode === 0) {
+            window.location.href = res.link;
+        }
+        else {
+            swal("Oh no!", res.errMessage, "warning");
+            setIsLoadingDatPhong(false)
+        }
+
+
+
+
+    }
+
+    const uploadImageTT = (e) => {
+        let files = e.target.files
+        let file = files[0]
+
+        let url = URL.createObjectURL(file)
+        setUrlAnhTT(url)
+        setFileAnhTT(file)
+    }
+
+
+    const handleDatPhongLoai3 = async () => {
+        if (!timeStart || !timeEnd || !sdt || !hoTen || !email) {
+            swal("Khoan!", 'Vui lòng điền đầy đủ thông tin', "warning");
+            return
+        }
+        if (!fileAnhTT) {
+            swal("Khoan!", 'Hãy chọn ảnh giao dịch', "warning");
+            return
+        }
+
+        let form = new FormData()
+        form.append('file', fileAnhTT)
+        let arrIdPhong = dsDaChon.map(item => item.idPhong)
+
+        setIsLoadingModalTT(true)
+        let res = await datPhongKsLoai3(form, {
+            idPhong: arrIdPhong || [],
+            timeStart,
+            timeEnd,
+            hoTen,
+            email,
+            sdt
+        })
+
+        console.log(res);
+        if (res?.errCode === 0) {
+            setOpenModalTTLoai3(false)
+            setOpenModalDatPhong(false)
+            swal("Success", "Đặt phòng thành công", "success");
+        }
+        else {
+            swal("Oh no!", res.errMessage, "warning");
+        }
+        setIsLoadingModalTT(true)
+
+    }
+
+    const onCancelTTloai3 = () => {
+        setOpenModalTTLoai3(false)
+        setUrlAnhTT('')
+        setFileAnhTT(null)
+    }
 
 
 
@@ -573,6 +692,62 @@ export default function TimPhong() {
                 <Footer />
             </div>
             <Modal
+                title={'Thanh toán'}
+                open={openModalTTLoai3}
+                onOk={handleDatPhongLoai3}
+                onCancel={() => onCancelTTloai3()}
+            >
+                <Spin spinning={isLoadingModalTT}>
+                    <div className={styles.modalThanhToan3}>
+                        <div className={styles.info}>
+                            <div className={styles.wrap}>
+                                <div className={styles.title}>Số tài khoản ngân hàng: </div>
+                                <div className={styles.value}>20094600000</div>
+                            </div>
+                            <div className={styles.wrap}>
+                                <div className={styles.title}>Tên: </div>
+                                <div className={styles.value}>Trần Văn A</div>
+                            </div>
+                            <div className={styles.wrap}>
+                                <div className={styles.title}>Ngân hàng: </div>
+                                <div className={styles.value}>Vietcombank</div>
+                            </div>
+                            <div className={styles.wrap}>
+                                <div className={styles.title}>Chi nhánh: </div>
+                                <div className={styles.value}>Cần thơ</div>
+                            </div>
+                            <div className={styles.wrap}>
+                                <div className={styles.title}>Nội dung: </div>
+                                <div className={styles.value}>123456 - Đặt phòng</div>
+                            </div>
+                        </div>
+                        <div className={styles.warning}>
+                            <div className={styles.title}>Lưu ý quan trọng</div>
+                            <div className={styles.sub}>
+                                Vui lòng không cung câp thông tin cá nhân hình ảnh giao dịch cho bất kì ai ngoài nhân viên CSKH trực tuyến của TBT Hotel.
+                            </div>
+                        </div>
+                        <div className={styles.WrapAnhGiaoDich}>
+                            <label className={styles.anhGiaoDich}>
+                                {
+                                    urlAnhTT &&
+                                    <Image
+                                        alt=''
+                                        height={100}
+                                        width={100}
+                                        src={urlAnhTT}
+                                        style={{ objectFit: 'cover' }}
+                                    />
+                                }
+                                <input type='file' accept='image/*' hidden onChange={uploadImageTT} />
+                            </label>
+                            <b>Ảnh giao dịch</b>
+                        </div>
+                    </div>
+                </Spin>
+            </Modal>
+
+            <Modal
                 title={'Đặt phòng'}
                 open={openModalDatPhong}
                 onOk={handleDatPhong}
@@ -604,9 +779,40 @@ export default function TimPhong() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
+                    <div style={{ marginTop: '10px' }}>
+                        <b style={{ marginRight: '10px' }}>Phương thức thanh toán</b>
+
+                        <Select
+                            value={loadiThanhToan}
+                            placeholder='shfj'
+                            style={{
+
+                            }}
+                            onChange={(value) => setLoaiThanhToan(value)}
+                            options={[
+                                {
+                                    value: '1',
+                                    label: 'Thanh toán tại quầy',
+                                },
+                                {
+                                    value: '2',
+                                    label: 'Thanh toán Paypal',
+                                },
+                                {
+                                    value: '3',
+                                    label: 'Các Ngân hàng khác',
+                                },
+                            ]}
+                        />
+
+                    </div>
+
+
 
                 </Spin>
             </Modal>
+
+
         </>
     )
 }

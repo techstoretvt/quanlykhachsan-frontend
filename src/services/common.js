@@ -130,6 +130,20 @@ function formatDate(dateTimeString) {
     return formattedDateTime;
 }
 
+function formatDate2(dateTimeString) {
+    const dateTime = new Date(dateTimeString);
+
+    const day = String(dateTime.getDate()).padStart(2, '0');
+    const month = String(dateTime.getMonth() + 1).padStart(2, '0');
+    const year = String(dateTime.getFullYear());
+
+
+    // Định dạng lại ngày tháng và giờ
+    const formattedDateTime = `${day}/${month}/${year}`;
+
+    return formattedDateTime;
+}
+
 const converNumberToMoney = (number) => {
 
     return new Intl.NumberFormat("ja-JP").format(number)
@@ -145,5 +159,6 @@ export {
     renderAvatarUser_url,
     decode_token,
     formatDate,
+    formatDate2,
     converNumberToMoney
 }

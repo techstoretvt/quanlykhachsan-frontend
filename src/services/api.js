@@ -73,7 +73,7 @@ export const getDanhSachPhong = async (data) => {
 
 export const datPhongKs = async (data) => {
     try {
-        return await axios.post('/api/v1/dat-phong-ks-user', data);
+        return await axios.post('/api/v1/dat-phong-ks-loai1-user', data);
     } catch (error) {
         console.log(
             'Loi: ',
@@ -84,6 +84,39 @@ export const datPhongKs = async (data) => {
         };
     }
 };
+
+export const datPhongKsLoai2 = async (data) => {
+    try {
+        return await axios.post('/api/v1/dat-phong-ks-loai2-user', data);
+    } catch (error) {
+        console.log(
+            'Loi: ',
+            error?.response?.data
+        );
+        return {
+            errCode: -1,
+        };
+    }
+};
+
+export const datPhongKsLoai3 = async (form, data) => {
+    try {
+        return await axios.post('/api/v1/dat-phong-ks-loai3-user', form, {
+            params: data
+        });
+    } catch (error) {
+        console.log(
+            'Loi: ',
+            error?.response?.data
+        );
+        return {
+            errCode: -1,
+        };
+    }
+};
+
+
+
 
 export const getKhachHangBySdt = async (data) => {
     try {
@@ -104,6 +137,32 @@ export const getListDatPhong = async (data) => {
         return await axios.get("/api/v1/get-list-dat-phong-by-id-khach", {
             params: data
         });
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: adminService.js:534 ~ xoaBaiHat ~ error:",
+            error?.response?.data || error
+        );
+        return error?.response?.data || { errCode: -1, errMessage: "Error" };
+    }
+};
+
+export const guiEmailHuyDon = async (data) => {
+    try {
+        return await axios.get("/api/v1/gui-ma-huy-phong-admin", {
+            params: data
+        });
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: adminService.js:534 ~ xoaBaiHat ~ error:",
+            error?.response?.data || error
+        );
+        return error?.response?.data || { errCode: -1, errMessage: "Error" };
+    }
+};
+
+export const huyPhongByUser = async (data) => {
+    try {
+        return await axios.put("/api/v1/huy-phong-by-user", data);
     } catch (error) {
         console.log(
             "🚀 ~ file: adminService.js:534 ~ xoaBaiHat ~ error:",
