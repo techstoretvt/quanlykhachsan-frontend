@@ -87,10 +87,11 @@ export default function LienHe() {
             </div>
 
 
-            <div class="fb-comments"
-                data-href="https://quanlykhachsan.vercel.app/lien-he"
-                data-width="1000" data-numposts="5">
-
+            <div style={{ backgroundColor: '#fff' }}>
+                <div class="fb-comments"
+                    data-href="https://quanlykhachsan.vercel.app/lien-he"
+                    data-width="" data-numposts="5">
+                </div>
             </div>
             <Footer />
         </div>
