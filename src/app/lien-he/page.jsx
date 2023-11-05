@@ -7,6 +7,8 @@ import Footer from '@/components/footer/Footer'
 import { Input } from 'antd';
 import { guiEmailService } from '../../services/api';
 import swal from 'sweetalert';
+import dynamic from 'next/dynamic';
+
 
 export default function LienHe() {
 
@@ -88,6 +90,7 @@ export default function LienHe() {
 
 
             <div style={{ backgroundColor: '#fff', display: 'flex', justifyContent: 'center' }}>
+                <div id="fb-root"></div>
                 <div className="fb-comments"
                     data-href="https://quanlykhachsan.vercel.app/lien-he"
                     data-width="1000" data-numposts="5">

@@ -4,6 +4,14 @@ import styles from './styles.module.scss'
 import Banner from '@/components/banner/banner'
 import Footer from '@/components/footer/Footer'
 import { getNoiDungBaiViet } from '../../../services/api';
+import dynamic from 'next/dynamic'
+const CommentFB = dynamic(() =>
+    import('@/components/commentFB/CommentFB').then(component => component.Hello),
+    {
+        ssr: false
+    }
+);
+
 
 
 export default function ChiTietBaiViet({ params }) {
@@ -32,12 +40,10 @@ export default function ChiTietBaiViet({ params }) {
             <div className={styles.ChiTietBaiViet_content} dangerouslySetInnerHTML={{ __html: content }}>
 
             </div>
-            <div style={{ backgroundColor: '#fff', display: 'flex', justifyContent: 'center' }}>
-                <div className="fb-comments"
-                    data-href={`https://quanlykhachsan.vercel.app/bai-viet/${params.idBaiViet}`}
-                    data-width="1000" data-numposts="5">
-                </div>
-            </div>
+            {
+                content &&
+                <CommentFB id={params.idBaiViet} />
+            }
             <Footer />
         </div>
     )
