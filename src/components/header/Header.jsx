@@ -16,9 +16,9 @@ export default function Header() {
                 <Link href={'/bai-viet'} className={styles.item}>
                     <div className={styles.item_text}>blog</div>
                 </Link>
-                <Link href={'/lien-he'} className={styles.item}>
+                <a href={'/lien-he'} className={styles.item}>
                     <div className={styles.item_text}>Liên hệ</div>
-                </Link>
+                </a>
             </div>
         </header>
     )

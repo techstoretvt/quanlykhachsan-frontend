@@ -40,7 +40,7 @@ export default function Page() {
                                     width: index === 0 ? "100%" : index > 0 && index < 3 ? "50%" : "33%"
                                 }}
                             >
-                                <Link href={`bai-viet/${item.id}`}>
+                                <a href={`bai-viet/${item.id}`}>
                                     <Image
                                         src={item.anhBia}
                                         width={500}
@@ -48,11 +48,11 @@ export default function Page() {
                                         alt="Picture of the author"
                                         className={styles.anhBaiViet}
                                     />
-                                </Link>
+                                </a>
 
-                                <Link href={`bai-viet/${item.id}`} className={styles.tieuDe}>
+                                <a href={`bai-viet/${item.id}`} className={styles.tieuDe}>
                                     {item.tieuDe}
-                                </Link>
+                                </a>
 
                                 <div className={styles.thoiGian}>
                                     {item.timeText}

@@ -83,7 +83,7 @@ export default function LienHe() {
                 </div>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.120033806843!2d105.7217157952975!3d10.006942758214603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08903d92d1d0d%3A0x2c147a40ead97caa!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOYW0gQ-G6p24gVGjGoQ!5e0!3m2!1svi!2s!4v1697953413784!5m2!1svi!2s" width="100%" height="450"
                     style={{ border: '0', marginTop: '50px' }}
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
 
                 </iframe>
             </div>
