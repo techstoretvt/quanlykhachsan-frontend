@@ -5,12 +5,7 @@ import Banner from '@/components/banner/banner'
 import Footer from '@/components/footer/Footer'
 import { getNoiDungBaiViet } from '../../../services/api';
 import dynamic from 'next/dynamic'
-const CommentFB = dynamic(() =>
-    import('@/components/commentFB/CommentFB').then(component => component.Hello),
-    {
-        ssr: false
-    }
-);
+import CommentFB from '@/components/commentFB/CommentFB'
 
 
 
