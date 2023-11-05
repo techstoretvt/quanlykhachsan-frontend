@@ -35,10 +35,8 @@ export default function ChiTietBaiViet({ params }) {
             <div className={styles.ChiTietBaiViet_content} dangerouslySetInnerHTML={{ __html: content }}>
 
             </div>
-            {
-                content &&
-                <CommentFB id={params.idBaiViet} />
-            }
+
+            <CommentFB id={params.idBaiViet} />
             <Footer />
         </div>
     )
