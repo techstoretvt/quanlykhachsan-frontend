@@ -32,7 +32,12 @@ export default function ChiTietBaiViet({ params }) {
             <div className={styles.ChiTietBaiViet_content} dangerouslySetInnerHTML={{ __html: content }}>
 
             </div>
-
+            <div style={{ backgroundColor: '#fff', display: 'flex', justifyContent: 'center' }}>
+                <div className="fb-comments"
+                    data-href={`https://quanlykhachsan.vercel.app/bai-viet/${params.idBaiViet}`}
+                    data-width="1000" data-numposts="5">
+                </div>
+            </div>
             <Footer />
         </div>
     )
