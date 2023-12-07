@@ -6,7 +6,7 @@ import Footer from '@/components/footer/Footer'
 export default function page() {
     return (
         <div className={styles.khuyenmai_container}>
-            <Banner />
+            <Banner active="khuyenMai" />
             <div className={styles.khuyenmai_content}>
                 <div className={styles.anh1}>
                     <div className={styles.text}>

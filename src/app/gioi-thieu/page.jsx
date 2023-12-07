@@ -62,7 +62,7 @@ const ds_khachsan = [
 export default function index() {
     return (
         <div className={styles.gioithieu_container}>
-            <Banner />
+            <Banner active="gioiThieu" />
             <div className={styles.wrap_gioithieu}>
                 <div className={styles.title}>TBT Hotel</div>
                 <div className={styles.sub}>

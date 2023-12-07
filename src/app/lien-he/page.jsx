@@ -41,7 +41,7 @@ export default function LienHe() {
 
     return (
         <div className={styles.LienHe_container}>
-            <Banner />
+            <Banner active="lienHe" />
             <div className={styles.LienHe_contenr}>
                 <div className={styles.title}>Liên hệ</div>
 

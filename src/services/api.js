@@ -172,3 +172,35 @@ export const huyPhongByUser = async (data) => {
     }
 };
 
+export const getUserLogin = async (accessToken) => {
+    try {
+        return await axios.get("/api/get-user-login", {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: adminService.js:534 ~ xoaBaiHat ~ error:",
+            error?.response?.data || error
+        );
+        return error?.response?.data || { errCode: -1, errMessage: "Error" };
+    }
+};
+
+export const getUserLoginRefesh = async (token) => {
+    try {
+        return await axios.get("/api/v1/get-user-login-refresh-token", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: adminService.js:534 ~ xoaBaiHat ~ error:",
+            error?.response?.data || error
+        );
+        return error?.response?.data || { errCode: -1, errMessage: "Error" };
+    }
+};
+

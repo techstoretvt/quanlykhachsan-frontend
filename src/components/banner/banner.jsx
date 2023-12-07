@@ -88,7 +88,7 @@ export default function Banner(props) {
 
     return (
         <div className={styles.banner_container} style={{ height: height ? height : '100vh' }}>
-            <Header />
+            <Header active={props.active} />
 
             <div className={styles.from_dat_lich}>
                 <div className={styles.group}>

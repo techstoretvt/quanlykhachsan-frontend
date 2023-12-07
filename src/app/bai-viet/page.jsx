@@ -27,7 +27,7 @@ export default function Page() {
 
     return (
         <div className={styles.baiviet_container}>
-            <Banner />
+            <Banner active="baiViet" />
 
             <div className={styles.baiviet_content}>
 

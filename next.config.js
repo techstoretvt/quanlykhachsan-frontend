@@ -17,6 +17,7 @@ const nextConfig = {
     // },
     env: {
         REACT_APP_BACKEND_URL: process.env.REACT_APP_BACKEND_URL,
+        REACT_APP_LOGIN_URL: process.env.REACT_APP_LOGIN_URL,
         //   REACT_APP_BACKEND_URL_BUILD: process.env.REACT_APP_BACKEND_URL_BUILD,
         //   REACT_APP_CLIENT_ID_GG: process.env.REACT_APP_CLIENT_ID_GG,
         //   REACT_APP_APPID_FACE: process.env.REACT_APP_APPID_FACE,

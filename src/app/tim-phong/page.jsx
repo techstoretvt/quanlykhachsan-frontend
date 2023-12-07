@@ -508,7 +508,8 @@ export default function TimPhong() {
             timeEnd,
             hoTen,
             email,
-            sdt
+            sdt,
+            idUser: localStorage.getItem("idUser")
         })
 
         console.log(res);
@@ -543,7 +544,8 @@ export default function TimPhong() {
             timeEnd,
             hoTen,
             email,
-            sdt
+            sdt,
+            idUser: localStorage.getItem("idUser")
         })
 
         console.log("paypal: ", res);
@@ -591,7 +593,8 @@ export default function TimPhong() {
             timeEnd,
             hoTen,
             email,
-            sdt
+            sdt,
+            idUser: localStorage.getItem("idUser")
         })
 
         console.log(res);

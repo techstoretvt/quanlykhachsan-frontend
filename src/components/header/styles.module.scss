@@ -24,6 +24,13 @@
 
             text-decoration: none;
 
+            &.active {
+                .item_text {
+                    color: #06ffbc;
+                    // text-shadow: 1px 1px red;
+                }
+            }
+
             .item_text {
                 color: #fff;
                 font-weight: 500;
@@ -33,8 +40,53 @@
                     color: #ccc;
                     cursor: pointer;
                 }
+
+
             }
         }
     }
 
+}
+
+.wrap_login {
+    padding: 0 20px;
+
+    >.btnLogin {
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid #333;
+        border-radius: 5px;
+        padding: 4px 10px;
+
+        &:hover {
+            color: blue;
+            cursor: pointer;
+        }
+    }
+
+    >.wrap_info {
+        display: flex;
+        gap: 10px;
+
+        // background-color: #7373731e;
+
+        >.nameUser {
+            border-radius: 5px;
+            padding: 4px 10px;
+            font-weight: bold;
+            color: orangered;
+        }
+
+        >.btnDangXuat {
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 4px 10px;
+            color: #000;
+
+            &:hover {
+                color: blue;
+                cursor: pointer;
+            }
+        }
+    }
 }
