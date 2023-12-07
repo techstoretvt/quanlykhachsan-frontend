@@ -632,7 +632,7 @@ export default function TimPhong() {
                     </div>
                     <div className={styles.fromBook}>
                         <div className={styles.fromBook_time}>
-                            <div>25/10 - 30/10</div>
+                            <div>8/12 - 13/12</div>
                             <div>5 ngay</div>
                         </div>
                         <div>Phong: 1 nguoi</div>

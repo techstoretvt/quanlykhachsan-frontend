@@ -120,7 +120,7 @@ export default function Banner(props) {
                     </div>
                 </div>
                 <div className={styles.group}>
-                    <div className={styles.title}>Số lượng khác</div>
+                    <div className={styles.title}>Số lượng khách</div>
                     <div className={styles.wrap_input}>
                         <Input
                             size="large"

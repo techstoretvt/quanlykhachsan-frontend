@@ -401,3 +401,29 @@
         }
     }
 }
+
+@media (max-width: 1000px) {
+    .TimPhong_container {
+
+        .TimPhong_content {
+
+            // display: block !important;
+            flex-direction: column;
+
+            .fromBook {
+                width: 100%;
+                top: unset;
+                bottom: 0;
+                background-color: #ccc;
+
+                .wrap_chonPhong {
+                    max-height: 400px;
+                    overflow-y: auto;
+                }
+            }
+        }
+    }
+
+
+
+}
