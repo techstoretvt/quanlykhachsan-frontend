@@ -3,7 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Script from "next/script";
 const inter = Inter({ subsets: ['latin'] })
-import ChatBot from '../components/ChatBot/page.jsx'
+// import ChatBot from '../components/ChatBot/page.jsx'
+import dynamic from 'next/dynamic'
+const ChatBot = dynamic(() => import('../components/ChatBot/page.jsx'))
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,7 +22,7 @@ export default function RootLayout({ children }) {
         {/* <div id="fb-root"></div> */}
         {/* <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq"></script> */}
         <Script src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq" async defer crossorigin="anonymous" />
-        {/* <ChatBot /> */}
+        <ChatBot />
       </body>
     </html>
   )

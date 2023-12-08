@@ -59,9 +59,9 @@ export default function Header(props) {
                     <Link href={'/bai-viet'} className={props?.active === 'baiViet' ? styles.item + " " + styles.active : styles.item}>
                         <div className={styles.item_text}>blog</div>
                     </Link>
-                    <a href={'/lien-he'} className={props?.active === 'lienHe' ? styles.item + " " + styles.active : styles.item}>
+                    <Link href={'/lien-he'} className={props?.active === 'lienHe' ? styles.item + " " + styles.active : styles.item}>
                         <div className={styles.item_text}>Liên hệ</div>
-                    </a>
+                    </Link>
                 </div>
             </header>
             <div className={styles.wrap_login}>
