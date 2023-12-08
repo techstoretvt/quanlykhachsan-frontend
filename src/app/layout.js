@@ -5,7 +5,7 @@ import Script from "next/script";
 const inter = Inter({ subsets: ['latin'] })
 // import ChatBot from '../components/ChatBot/page.jsx'
 import dynamic from 'next/dynamic'
-const ChatBot = dynamic(() => import('../components/ChatBot/page.jsx'))
+const ChatBot = dynamic(() => import('../components/ChatBot/page.jsx'), { ssr: false })
 
 export const metadata = {
   title: 'Create Next App',
