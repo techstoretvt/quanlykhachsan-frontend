@@ -11,15 +11,15 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  console.log("load layout");
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
         {children}
         <script src="https://kit.fontawesome.com/a19bb8670a.js" />
         {/* <div id="fb-root"></div> */}
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq"></script>
-        <div id="fb-customer-chat" className="fb-customerchat"></div>
-        <ChatBot />
+        {/* <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq"></script> */}
+        {/* <ChatBot /> */}
       </body>
     </html>
   )

@@ -40,63 +40,66 @@ export default function LienHe() {
 
 
     return (
-        <div className={styles.LienHe_container}>
-            <Banner active="lienHe" />
-            <div className={styles.LienHe_contenr}>
-                <div className={styles.title}>Liên hệ</div>
+        <>
+            <div className={styles.LienHe_container}>
+                <Banner active="lienHe" />
+                <div className={styles.LienHe_contenr}>
+                    <div className={styles.title}>Liên hệ</div>
 
-                <Input
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Tiêu đề"
-                    style={{ marginTop: '20px', height: '50px' }}
-                />
-                <Input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Họ và tên"
-                    style={{ marginTop: '20px', height: '50px' }}
-                />
-                <Input
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    style={{ marginTop: '20px', height: '50px' }}
-                />
-                <Input
-                    value={sdt}
-                    onChange={(e) => setSdt(e.target.value)}
-                    placeholder="Điện thoại"
-                    style={{ marginTop: '20px', height: '50px' }}
-                />
-                <Input
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    placeholder="Lời nhắn"
-                    style={{ marginTop: '20px', height: '100px' }}
-                />
+                    <Input
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Tiêu đề"
+                        style={{ marginTop: '20px', height: '50px' }}
+                    />
+                    <Input
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Họ và tên"
+                        style={{ marginTop: '20px', height: '50px' }}
+                    />
+                    <Input
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        style={{ marginTop: '20px', height: '50px' }}
+                    />
+                    <Input
+                        value={sdt}
+                        onChange={(e) => setSdt(e.target.value)}
+                        placeholder="Điện thoại"
+                        style={{ marginTop: '20px', height: '50px' }}
+                    />
+                    <Input
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        placeholder="Lời nhắn"
+                        style={{ marginTop: '20px', height: '100px' }}
+                    />
 
-                <div className={styles.button}>
-                    <button onClick={handleSendEmail}>
-                        Gửi
-                    </button>
+                    <div className={styles.button}>
+                        <button onClick={handleSendEmail}>
+                            Gửi
+                        </button>
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.120033806843!2d105.7217157952975!3d10.006942758214603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08903d92d1d0d%3A0x2c147a40ead97caa!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOYW0gQ-G6p24gVGjGoQ!5e0!3m2!1svi!2s!4v1697953413784!5m2!1svi!2s" width="100%" height="450"
+                        style={{ border: '0', marginTop: '50px' }}
+                        allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+
+                    </iframe>
                 </div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.120033806843!2d105.7217157952975!3d10.006942758214603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08903d92d1d0d%3A0x2c147a40ead97caa!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOYW0gQ-G6p24gVGjGoQ!5e0!3m2!1svi!2s!4v1697953413784!5m2!1svi!2s" width="100%" height="450"
-                    style={{ border: '0', marginTop: '50px' }}
-                    allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
-
-                </iframe>
-            </div>
 
 
-            <div style={{ backgroundColor: '#fff', display: 'flex', justifyContent: 'center' }}>
-                <div id="fb-root"></div>
-                <div className="fb-comments"
-                    data-href="https://quanlykhachsan.vercel.app/lien-he"
-                    data-width="1000" data-numposts="5">
+                <div style={{ backgroundColor: '#fff', display: 'flex', justifyContent: 'center' }}>
+                    <div id="fb-root"></div>
+                    <div className="fb-comments"
+                        data-href="https://quanlykhachsan.vercel.app/lien-he"
+                        data-width="1000" data-numposts="5">
+                    </div>
                 </div>
+                <Footer />
             </div>
-            <Footer />
-        </div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq"></script>
+        </>
     )
 }
