@@ -99,7 +99,7 @@ export default function LienHe() {
                 </div>
                 <Footer />
             </div>
-            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq"></script>
+            {/* <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq"></script> */}
         </>
     )
 }

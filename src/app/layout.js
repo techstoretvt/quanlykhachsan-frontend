@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Script } from 'next'
+import Script from "next/script";
 const inter = Inter({ subsets: ['latin'] })
 import ChatBot from '../components/ChatBot/page.jsx'
 
@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
         <script src="https://kit.fontawesome.com/a19bb8670a.js" />
         {/* <div id="fb-root"></div> */}
         {/* <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq"></script> */}
+        <Script src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=559123289439284" nonce="i71HCiiq" async defer crossorigin="anonymous" />
         {/* <ChatBot /> */}
       </body>
     </html>

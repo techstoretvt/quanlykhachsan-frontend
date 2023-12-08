@@ -7,12 +7,6 @@ const id = "116661344652051";
 const appid = "1131387264234227";
 
 const FacebookChat = () => {
-    const scriptRef = useRef();
-
-    useEffect(() => {
-        return () => { };
-    }, []);
-
     return (
         <div>
             <FacebookProvider appId={appid} chatSupport>
