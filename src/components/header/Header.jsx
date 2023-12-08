@@ -8,7 +8,7 @@ export default function Header(props) {
     const [userInfo, setUserInfo] = useState(null)
 
     useEffect(() => {
-        console.log('props: ', props);
+        // console.log('props: ', props);
         getUser()
     }, [])
 
@@ -19,7 +19,7 @@ export default function Header(props) {
         if (!accessToken || !refreshToken) return
 
         let res = await getUserLogin(accessToken)
-        console.log(res);
+        // console.log(res);
         if (res?.errCode !== 0) {
             let res2 = await getUserLoginRefesh(refreshToken)
             if (res2?.errCode === 0) {
@@ -74,7 +74,7 @@ export default function Header(props) {
                 {
                     userInfo &&
                     <div className={styles.wrap_info}>
-                        <div className={styles.nameUser}>{userInfo?.firstName + " " + userInfo?.lastName}</div>
+                        <Link href={'/lich-dat-phong'} className={styles.nameUser}>{userInfo?.firstName + " " + userInfo?.lastName}</Link>
                         <div className={styles.btnDangXuat} onClick={handleDangXuat}>Đăng xuất</div>
                     </div>
 

@@ -75,6 +75,12 @@
             padding: 4px 10px;
             font-weight: bold;
             color: orangered;
+            text-decoration: none;
+
+            &:hover {
+                cursor: pointer;
+                color: blue;
+            }
         }
 
         >.btnDangXuat {

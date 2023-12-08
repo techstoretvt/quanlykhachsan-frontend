@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 import Banner from '@/components/banner/banner'
 import Footer from '@/components/footer/Footer'
 import { useSearchParams } from 'next/navigation'
-import { getDanhSachPhong, datPhongKs, getKhachHangBySdt, datPhongKsLoai2, datPhongKsLoai3 } from '../../services/api';
+import { getDanhSachPhong, datPhongKs, getKhachHangBySdt, datPhongKsLoai2, datPhongKsLoai3, getListDisableDateDatPhongKs } from '../../services/api';
 import swal from 'sweetalert'
 import { Button, Modal, DatePicker, Input, Spin, Select } from 'antd';
 import Image from 'next/image'
@@ -381,6 +381,7 @@ export default function TimPhong() {
     const [urlAnhTT, setUrlAnhTT] = useState('')
     const [openModalTTLoai3, setOpenModalTTLoai3] = useState(false)
     const [isLoadingModalTT, setIsLoadingModalTT] = useState(false)
+    const [listDisableDate, setListDisableDate] = useState([])
 
     useEffect(() => {
         handleGetListPhong()
@@ -606,7 +607,7 @@ export default function TimPhong() {
         else {
             swal("Oh no!", res.errMessage, "warning");
         }
-        setIsLoadingModalTT(true)
+        setIsLoadingModalTT(false)
 
     }
 
@@ -616,6 +617,11 @@ export default function TimPhong() {
         setFileAnhTT(null)
     }
 
+
+    const FuncOpenModalDatPhong = async () => {
+        setOpenModalDatPhong(true)
+
+    }
 
 
     return (
@@ -684,7 +690,7 @@ export default function TimPhong() {
                         </div>
                         <Button type="primary" className={styles.fromBook_btnDatPhong}
                             disabled={dsDaChon.length === 0}
-                            onClick={() => setOpenModalDatPhong(true)}
+                            onClick={() => FuncOpenModalDatPhong()}
                         >
                             Đặt phòng
                         </Button>

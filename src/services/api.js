@@ -204,3 +204,32 @@ export const getUserLoginRefesh = async (token) => {
     }
 };
 
+export const getListDisableDateDatPhongKs = async (data) => {
+    try {
+        return await axios.get("/api/v1/get-list-disable-dat-phong-ks", {
+            params: data
+        });
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: adminService.js:534 ~ xoaBaiHat ~ error:",
+            error?.response?.data || error
+        );
+        return error?.response?.data || { errCode: -1, errMessage: "Error" };
+    }
+};
+
+export const getListDatPhongByIdUser = async (token) => {
+    try {
+        return await axios.get("/api/v1/get-list-dat-phong-by-id-user", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    } catch (error) {
+        console.log(
+            "🚀 ~ file: adminService.js:534 ~ xoaBaiHat ~ error:",
+            error?.response?.data || error
+        );
+        return error?.response?.data || { errCode: -1, errMessage: "Error" };
+    }
+};
