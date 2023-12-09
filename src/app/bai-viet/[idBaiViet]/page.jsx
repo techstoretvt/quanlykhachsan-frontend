@@ -17,6 +17,7 @@ export default function ChiTietBaiViet({ params }) {
         handleGetContent();
     }, [])
 
+    //lay noi dung
     const handleGetContent = async () => {
         let res = await getNoiDungBaiViet({
             id: params.idBaiViet
