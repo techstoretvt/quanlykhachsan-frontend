@@ -12,6 +12,7 @@ export default function Header(props) {
         getUser()
     }, [])
 
+
     const getUser = async () => {
         let accessToken = localStorage.getItem('accessToken') ?? ''
         let refreshToken = localStorage.getItem('refreshToken') ?? ''
