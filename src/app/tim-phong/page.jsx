@@ -382,6 +382,7 @@ export default function TimPhong() {
     const [openModalTTLoai3, setOpenModalTTLoai3] = useState(false)
     const [isLoadingModalTT, setIsLoadingModalTT] = useState(false)
     const [listDisableDate, setListDisableDate] = useState([])
+    const [diemKH, setDiemKH] = useState(0)
 
     useEffect(() => {
         handleGetListPhong()
@@ -466,6 +467,7 @@ export default function TimPhong() {
             if (res?.errCode === 0) {
                 setHoTen(res.data.hoTen)
                 setEmail(res.data.email)
+                setDiemKH(res.data.diem)
             }
             else {
                 setHoTen('')
@@ -620,6 +622,47 @@ export default function TimPhong() {
 
     const FuncOpenModalDatPhong = async () => {
         setOpenModalDatPhong(true)
+
+    }
+
+    const soNgayO = () => {
+        if (!timeEnd || !timeStart) return 0;
+        let tg = timeEnd - timeStart
+        console.log('thoi gian: ', tg);
+
+        return tg / 86400 + 1
+    }
+
+    const getUuDai = () => {
+        if (!diemKH) return 0
+        return diemKH === 1 ? 5 : diemKH === 2 ? 10 : 15
+    }
+
+    const getUIKhuyenMaiPhong = () => {
+        return (
+            <ul>
+                {
+                    dsDaChon.map((item, index) => {
+                        return (
+                            <li key={index}>
+                                {item.tenPhong}: {item.khuyenMai}%
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        )
+    }
+
+    const getThanhTien = () => {
+        let uuDai = getUuDai();
+        let soNgay = soNgayO();
+
+        let thanhTien = 0;
+        dsDaChon.forEach(item => {
+            thanhTien += (item.donGia * soNgay) * (100 - item.khuyenMai) / 100
+        })
+        return thanhTien * (100 - uuDai) / 100
 
     }
 
@@ -815,6 +858,15 @@ export default function TimPhong() {
                         />
 
                     </div>
+
+                    <ul>
+                        <li>Số ngày ở: {soNgayO()}</li>
+                        <li>Khuyến mãi phòng:
+                            {getUIKhuyenMaiPhong()}
+                        </li>
+                        <li>Ưu đãi: {getUuDai()}%</li>
+                        <li>Thành tiền: {getThanhTien()}</li>
+                    </ul>
 
 
 
