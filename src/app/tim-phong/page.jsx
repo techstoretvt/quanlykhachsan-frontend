@@ -479,7 +479,17 @@ export default function TimPhong() {
 
     const handleDatPhong = () => {
         if (loadiThanhToan === '1') {
-            handleDatPhongLoai1()
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const startOfDayTimestamp = today.getTime() / 1000;
+            console.log("now: ", startOfDayTimestamp);
+
+            if (timeStart !== startOfDayTimestamp) {
+                swal("Khoan!", 'Vui lòng thanh toán tiền cọc', "warning");
+            }
+            else {
+                handleDatPhongLoai1()
+            }
         }
         else if (loadiThanhToan === '2') {
             handleDatPhongPaypal()
@@ -664,6 +674,21 @@ export default function TimPhong() {
         })
         return thanhTien * (100 - uuDai) / 100
 
+    }
+
+
+    const getTienCoc = () => {
+        let tien = getThanhTien() * 0.1
+        return tien
+    }
+
+    const checkThoiGianCoc = () => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const startOfDayTimestamp = today.getTime() / 1000;
+        console.log("now: ", startOfDayTimestamp);
+
+        return timeStart !== startOfDayTimestamp
     }
 
 
@@ -866,6 +891,10 @@ export default function TimPhong() {
                         </li>
                         <li>Ưu đãi: {getUuDai()}%</li>
                         <li>Thành tiền: {getThanhTien()}</li>
+                        {
+                            checkThoiGianCoc() &&
+                            <li>Vui lòng cọc trước 10%: {getTienCoc()}</li>
+                        }
                     </ul>
 
 
