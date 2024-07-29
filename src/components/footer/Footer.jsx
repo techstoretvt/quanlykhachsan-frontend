@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import styles from './styles.module.scss'
 
 export default function Footer() {
@@ -47,6 +48,11 @@ export default function Footer() {
                         <div className={styles.text}>
                             Chính sách thanh toán
                         </div>
+                    </div>
+                    <div className={styles.wrap}>
+                        <Link href={'/blockchain'} className={styles.text}>
+                            Blockchain
+                        </Link>
                     </div>
                 </div>
                 <div className={styles.list}>

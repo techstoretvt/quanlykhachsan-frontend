@@ -1,11 +1,11 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import styles from './styles.module.scss'
 import Banner from '@/components/banner/banner'
 import Footer from '@/components/footer/Footer'
 import { useSearchParams } from 'next/navigation'
-import { getDanhSachPhong, datPhongKs, getKhachHangBySdt, datPhongKsLoai2, datPhongKsLoai3, getListDisableDateDatPhongKs } from '../../services/api';
+import { getDanhSachPhong, datPhongKs, datPhongKsLoai4, getKhachHangBySdt, datPhongKsLoai2, datPhongKsLoai3, getListDisableDateDatPhongKs } from '../../services/api';
 import swal from 'sweetalert'
 import { Button, Modal, DatePicker, Input, Spin, Select } from 'antd';
 import Image from 'next/image'
@@ -383,6 +383,7 @@ export default function TimPhong() {
     const [isLoadingModalTT, setIsLoadingModalTT] = useState(false)
     const [listDisableDate, setListDisableDate] = useState([])
     const [diemKH, setDiemKH] = useState(0)
+    const [idAccountCoin, setIdAccountCoin] = useState("")
 
     useEffect(() => {
         handleGetListPhong()
@@ -456,8 +457,10 @@ export default function TimPhong() {
         return false;
     };
 
+
     const onchangeSDT = async (value) => {
         if (value.length <= 10) setSdt(value)
+
 
 
         if (value.length === 10) {
@@ -478,6 +481,7 @@ export default function TimPhong() {
     }
 
     const handleDatPhong = () => {
+        console.log("loadiThanhToan: ", loadiThanhToan);
         if (loadiThanhToan === '1') {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
@@ -494,6 +498,9 @@ export default function TimPhong() {
         else if (loadiThanhToan === '2') {
             handleDatPhongPaypal()
         }
+        else if (loadiThanhToan === '4') {
+            handleThanhToanTienAo()
+        }
         else {
             //check value
             if (!timeStart || !timeEnd || !sdt || !hoTen || !email) {
@@ -504,6 +511,80 @@ export default function TimPhong() {
 
             //open modal
         }
+    }
+
+    const handleThanhToanTienAo = async () => {
+        console.log('thanh toan tien ao');
+
+        if (typeof window.ethereum !== 'undefined') {
+            console.log('MetaMask is installed!');
+        }
+
+        if (isLoadingDatPhong) return
+        if (!timeStart || !timeEnd || !sdt || !hoTen || !email) {
+            swal("Khoan!", 'Vui lòng điền đầy đủ thông tin', "warning");
+            return
+        }
+
+        //verify account
+        let idA = idAccountCoin
+        if (!idAccountCoin) {
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+
+            const account = accounts[0];
+
+            setIdAccountCoin(account);
+            idA = account
+
+            ethereum.on('accountsChanged', (accounts) => {
+                const account = accounts[0];
+                setIdAccountCoin(account);
+                console.log(`Account: ${account}`);
+            });
+        }
+
+        console.log(`Account: ${idAccountCoin}`);
+
+
+        //check giao dich
+
+        let amount = getTongTienAo()
+        let rs = await fetch(`http://localhost:3002/transfer-ks?id_a=${idA}&amount=${amount}`)
+
+        rs = await rs.json()
+        console.log(rs);
+        if (rs.errCode !== 0) {
+            swal("Oh no!", rs.errMessage, "warning");
+            setIsLoadingDatPhong(false)
+            return
+        }
+
+
+        //handle dat phong
+        let arrIdPhong = dsDaChon.map(item => item.idPhong)
+        setIsLoadingDatPhong(true)
+        let res = await datPhongKsLoai4({
+            idPhong: arrIdPhong || [],
+            timeStart,
+            timeEnd,
+            hoTen,
+            email,
+            sdt,
+            idUser: localStorage.getItem("idUser")
+        })
+
+        console.log(res);
+        if (res?.errCode === 0) {
+            swal("Success", 'Đặt phòng thành công', "success");
+            setOpenModalDatPhong(false)
+            setDsDaChon([])
+        }
+        else {
+            swal("Oh no!", res.errMessage, "warning");
+        }
+
+
+        setIsLoadingDatPhong(false)
     }
 
     const handleDatPhongLoai1 = async () => {
@@ -676,6 +757,10 @@ export default function TimPhong() {
 
     }
 
+    const getTongTienAo = () => {
+        return Math.floor(getThanhTien())
+    }
+
 
     const getTienCoc = () => {
         let tien = getThanhTien() * 0.1
@@ -829,6 +914,7 @@ export default function TimPhong() {
                 open={openModalDatPhong}
                 onOk={handleDatPhong}
                 onCancel={() => setOpenModalDatPhong(false)}
+                size='large'
             >
                 <Spin spinning={isLoadingGetUser || isLoadingDatPhong}>
                     <RangePicker
@@ -863,7 +949,7 @@ export default function TimPhong() {
                             value={loadiThanhToan}
                             placeholder='shfj'
                             style={{
-
+                                width: '100%',
                             }}
                             onChange={(value) => setLoaiThanhToan(value)}
                             options={[
@@ -874,6 +960,10 @@ export default function TimPhong() {
                                 {
                                     value: '2',
                                     label: 'Thanh toán Paypal',
+                                },
+                                {
+                                    value: '4',
+                                    label: 'Thanh toán tiền ảo',
                                 },
                                 {
                                     value: '3',
@@ -891,6 +981,10 @@ export default function TimPhong() {
                         </li>
                         <li>Ưu đãi: {getUuDai()}%</li>
                         <li>Thành tiền: {getThanhTien()}</li>
+                        {
+                            loadiThanhToan === '4' &&
+                            <li>Tiền ảo tương đương: {getTongTienAo()}</li>
+                        }
                         {
                             checkThoiGianCoc() &&
                             <li>Vui lòng cọc trước 10%: {getTienCoc()}</li>

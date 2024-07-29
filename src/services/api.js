@@ -85,6 +85,20 @@ export const datPhongKs = async (data) => {
     }
 };
 
+export const datPhongKsLoai4 = async (data) => {
+    try {
+        return await axios.post('/api/v1/dat-phong-ks-loai4-user', data);
+    } catch (error) {
+        console.log(
+            'Loi: ',
+            error?.response?.data
+        );
+        return {
+            errCode: -1,
+        };
+    }
+};
+
 export const datPhongKsLoai2 = async (data) => {
     try {
         return await axios.post('/api/v1/dat-phong-ks-loai2-user', data);

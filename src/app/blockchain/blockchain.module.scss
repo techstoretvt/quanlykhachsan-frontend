@@ -1,0 +1,64 @@
+.BlockChain {
+    background-color: #fff;
+    height: 100%;
+    width: min(1000px, 100%);
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 20px 40px;
+    margin-top: 50px;
+
+    >.title {
+        font-size: 34px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    >.BlockChain_top,
+    >.center {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+
+        >.item {
+            width: 50%;
+            // border: 1px solid #000;
+
+            >.input {
+                width: 100%;
+            }
+
+            >.balance {
+                color: #737373;
+                font-size: 12px;
+                margin-top: 6px;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+        }
+
+        >.button {}
+    }
+
+    >.center {
+        align-items: center;
+    }
+
+    >.result {
+        margin-top: 20px;
+
+
+        >.title {
+            color: #737373;
+            font-size: 18px;
+            margin-left: 4px;
+        }
+
+        >.result_content {
+            min-height: 200px;
+            border: 1px solid #000;
+            margin-top: 6px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    }
+}

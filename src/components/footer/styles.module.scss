@@ -27,6 +27,12 @@
                 .text {
                     color: #fff;
                     font-size: 14px;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                        color: aqua;
+                    }
                 }
 
                 .wrap_input {
