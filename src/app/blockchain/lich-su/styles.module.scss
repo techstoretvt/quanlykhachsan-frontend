@@ -1,0 +1,69 @@
+.LichSu {
+
+    >h2 {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 40px;
+        font-size: 30px;
+        color: #fff;
+    }
+
+    >.wrapLichSu {
+
+        width: min(100%, 900px);
+        border-radius: 10px;
+        margin: 30px auto 0;
+        min-height: 200px;
+
+
+        >.itemLichSu {
+            padding: 30px 40px;
+            border-radius: 10px;
+            margin: 20px 0;
+
+            &:nth-child(even) {
+                background-color: #fffdfd;
+            }
+
+            &:nth-child(odd) {
+                background-color: #d4f2ff;
+            }
+
+            >.row {
+                display: flex;
+                margin: 10px 0;
+
+                >.left {
+                    width: 250px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                >.right {
+                    flex: 1;
+                    width: 200px;
+                    display: flex;
+                    align-items: center;
+
+
+                    >.success {
+
+                        color: green;
+                        background-color: #e5f5f3;
+                        font-weight: 600;
+                        font-size: 12px;
+                        padding: 4px;
+                        border-radius: 4px;
+                    }
+
+                    >.from,
+                    >.to {
+                        color: blue;
+                    }
+                }
+            }
+        }
+
+    }
+}

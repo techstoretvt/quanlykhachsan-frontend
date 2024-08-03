@@ -36,27 +36,36 @@ const Item_phong = ({ data, addDsDaChon }) => {
 
     const RenderImagePhong = () => {
         if (!data) return;
-        let { ksAnhPhongs } = data;
+        let { anh1, anh2 } = data;
 
         return (
             <Slider {...settings}>
-                {
-                    ksAnhPhongs?.map(item => (
-                        <div key={item.id}>
-                            <Image src={item.urlAnh}
-                                width={100}
-                                height={100}
-                                alt=''
-                                className={styles.phongAnh_img}
-                                data-fancybox={`gallery-${data?.id}`}
-                                data-src={item.urlAnh}
-                                data-thumb={item.urlAnh}
-                                data-width={10000}
-                                data-height={10000}
-                            />
-                        </div>
-                    ))
-                }
+                <div >
+                    <Image src={anh1}
+                        width={100}
+                        height={100}
+                        alt=''
+                        className={styles.phongAnh_img}
+                        data-fancybox={`gallery-${data?.id}`}
+                        data-src={anh1}
+                        data-thumb={anh1}
+                        data-width={10000}
+                        data-height={10000}
+                    />
+                </div>
+                <div >
+                    <Image src={anh2}
+                        width={100}
+                        height={100}
+                        alt=''
+                        className={styles.phongAnh_img}
+                        data-fancybox={`gallery-${data?.id}`}
+                        data-src={anh2}
+                        data-thumb={anh2}
+                        data-width={10000}
+                        data-height={10000}
+                    />
+                </div>
             </Slider>
         )
     }
@@ -391,24 +400,34 @@ export default function TimPhong() {
 
 
     const handleGetListPhong = async () => {
-        const idChiNhanh = searchParams.get('idChiNhanh')
-        const timeStart = searchParams.get('timeStart')
-        const timeEnd = searchParams.get('timeEnd')
-        const soNguoi = searchParams.get('soNguoi')
+        // const idChiNhanh = searchParams.get('idChiNhanh')
+        // const timeStart = searchParams.get('timeStart')
+        // const timeEnd = searchParams.get('timeEnd')
+        // const soNguoi = searchParams.get('soNguoi')
 
-        let res = await getDanhSachPhong({
-            idChiNhanh,
-            timeStart,
-            timeEnd,
-            soNguoi
-        })
+        // let res = await getDanhSachPhong({
+        //     idChiNhanh,
+        //     timeStart,
+        //     timeEnd,
+        //     soNguoi
+        // })
 
-        console.log(res);
-        if (res?.errCode === 0) {
-            setListPhong(res.data)
-        }
-        else {
-            swal("Oh no!", res.errMessage, "warning");
+        // console.log(res);
+        // if (res?.errCode === 0) {
+        //     setListPhong(res.data)
+        // }
+        // else {
+        //     swal("Oh no!", res.errMessage, "warning");
+        // }
+
+
+        let rs = await fetch(`http://localhost:3002/get-all-hotel`)
+
+        rs = await rs.json()
+        console.log('hotel: ', rs);
+        if (rs.errCode === 0) {
+            let hotels = rs.data.map(item => ({ id: item.address, ...item }))
+            setListPhong(hotels)
         }
 
     }
@@ -459,6 +478,8 @@ export default function TimPhong() {
 
 
     const onchangeSDT = async (value) => {
+        setSdt(value)
+        return
         if (value.length <= 10) setSdt(value)
 
 
@@ -546,22 +567,29 @@ export default function TimPhong() {
         console.log(`Account: ${idAccountCoin}`);
 
 
-        //check giao dich
+        //check giao dich va luu lich su
+        let arrIdPhong = dsDaChon.map(item => item.idPhong)
 
         let amount = getTongTienAo()
-        let rs = await fetch(`http://localhost:3002/transfer-ks?id_a=${idA}&amount=${amount}`)
+        let rs = await fetch(`http://localhost:3002/transfer-ks?id_a=${idA}&amount=${amount}&id_phong=${arrIdPhong.join(" ")}&tenKhach=${hoTen}&sdt=${sdt}&email=${email}`)
 
         rs = await rs.json()
         console.log(rs);
         if (rs.errCode !== 0) {
-            swal("Oh no!", rs.errMessage, "warning");
+            swal("Oh no!", "Thanh toán thất bại", "warning");
             setIsLoadingDatPhong(false)
             return
         }
 
+        else {
+            swal("Success", 'Đặt phòng thành công', "success");
+            setOpenModalDatPhong(false)
+            setDsDaChon([])
+        }
 
+        return;
         //handle dat phong
-        let arrIdPhong = dsDaChon.map(item => item.idPhong)
+
         setIsLoadingDatPhong(true)
         let res = await datPhongKsLoai4({
             idPhong: arrIdPhong || [],
@@ -572,8 +600,6 @@ export default function TimPhong() {
             sdt,
             idUser: localStorage.getItem("idUser")
         })
-
-        console.log(res);
         if (res?.errCode === 0) {
             swal("Success", 'Đặt phòng thành công', "success");
             setOpenModalDatPhong(false)

@@ -1,0 +1,429 @@
+.TimPhong_container {
+
+    .TimPhong_content {
+        margin: 0 auto 50px;
+        width: min(1100px, 100%);
+        min-height: 200px;
+        display: flex;
+        gap: 10px;
+        align-items: self-start;
+
+        .listPhong {
+            flex: 1;
+            min-height: 200px;
+
+            .phong {
+                background-color: #fff;
+                border-radius: 10px;
+                overflow: hidden;
+                margin-bottom: 20px;
+
+                .top {
+                    display: flex;
+                    gap: 10px;
+                    border-bottom: 1px solid #ccc;
+                    padding: 0 0 20px;
+
+                    .phongAnh {
+                        width: 300px;
+                        min-height: 200px;
+
+                        .phongAnh_img {
+                            width: 100%;
+                            height: 200px;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .phongInfo {
+                        flex: 1;
+                        padding: 10px;
+
+                        .phongInfo_tenPhong {
+                            font-weight: bold;
+                            font-size: 18px;
+                        }
+
+                        .phongInfo_wrapNumber {
+                            margin-top: 10px;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+
+                            .phongInfo_wrapNumber_item {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+
+                                .phongInfo_wrapNumber_item_text {}
+                            }
+
+                        }
+
+                        .phongInfo_tienIch {
+                            margin-top: 10px;
+                            line-height: 16px;
+                            // height: auto;
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                        }
+
+                        .phongInfo_moTa {
+                            margin-top: 10px;
+                            line-height: 16px;
+                            height: 32px;
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                        }
+
+                        .more {
+                            margin-top: 20px;
+                            text-decoration: underline;
+                            cursor: pointer;
+                        }
+
+
+                    }
+                }
+
+                .bottom {
+                    min-height: 200px;
+
+                    .sale {
+                        background-color: #3e006b;
+                        width: fit-content;
+                        padding: 4px 6px;
+                        color: #fff;
+                        font-size: 12px;
+                    }
+
+                    >.wrap {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-end;
+                        padding: 10px;
+
+
+                        .left {
+
+                            .title {
+                                font-weight: bold;
+                                font-size: 18px;
+                            }
+
+                            >.wrap {
+                                margin-top: 6px;
+                                display: flex;
+                                align-items: center;
+                                gap: 6px;
+
+                                .text {
+                                    color: #177f0f;
+                                }
+                            }
+
+                            .more {
+                                margin-top: 10px;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        .right {
+                            display: flex;
+                            align-items: flex-end;
+                            gap: 10px;
+
+                            .left {
+
+                                .rootMoney {
+                                    font-size: 12px;
+                                    text-decoration: line-through;
+                                    color: #ccc;
+                                }
+
+                                .currentMoney {
+                                    margin-top: 4px;
+                                    font-weight: bold;
+                                }
+                            }
+
+                            .right {}
+                        }
+                    }
+                }
+            }
+        }
+
+        .fromBook {
+            position: sticky;
+            top: 0;
+            width: 350px;
+            padding: 20px 10px;
+            border-radius: 6px;
+            background-color: #fff;
+            border: 1px solid gray;
+
+            .fromBook_time {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+
+            .wrap_chonPhong {
+                border-top: 1px solid #ccc;
+                margin-top: 10px;
+                padding: 10px;
+
+                .wrap_chonPhong_nothing {
+                    text-align: center;
+                }
+
+                >.phongDaChon {
+                    margin-top: 20px;
+                    position: relative;
+
+                    >.title {
+                        font-weight: bold;
+                        margin-top: 10px;
+                    }
+
+                    >.wrap_info {
+                        display: flex;
+                        margin-top: 10px;
+                        justify-content: space-between;
+                        align-items: flex-end;
+
+                        >.left {
+
+                            >div {
+                                font-size: 12px;
+                            }
+                        }
+
+                        >.right {
+                            font-weight: bold;
+                            font-size: 14px;
+                        }
+                    }
+
+                    >.btnDelete {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .fromBook_btnDatPhong {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+.Modal_MoreInfo {
+    display: flex;
+    margin-top: 30px;
+    gap: 10px 20px;
+
+    >.left {
+
+        >.wrap_check {
+
+            >.checkItem {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                >.text {
+                    color: #177f0f;
+                }
+            }
+        }
+
+        >.title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        >.moTaPhong,
+        >.tienIchPhong,
+        >.diaChi {
+            text-align: justify;
+        }
+
+        >.wrap_tienIch {
+            margin-top: 10px;
+
+            >.tienIch_item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 300px;
+
+                >.left {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+
+                    >i {
+                        width: 20px;
+                    }
+
+                    >.text {
+                        font-weight: 600;
+                    }
+                }
+
+                >.right {}
+            }
+        }
+    }
+
+    >.right {
+        width: 400px;
+
+        >.anhPhong {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 200px;
+
+            .phongAnh_img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+        }
+
+        >.title {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        >.wrap_price {
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            background-color: #f4f2f6;
+
+            >.khuyenMai {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                >.title {
+                    font-weight: bold;
+                }
+
+                >.number {
+                    color: red;
+                }
+            }
+
+            >.thanhTien {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                >.title {
+                    font-weight: bold;
+                }
+
+                >.number {
+                    color: #000;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+.modalThanhToan3 {
+    >.info {
+        border: 1px solid green;
+        border-radius: 10px;
+        padding: 10px;
+
+        >.wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            >.title {}
+
+            >.value {
+                font-weight: bold;
+            }
+        }
+    }
+
+    >.warning {
+
+        >.title {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        >.sub {
+            color: red;
+        }
+    }
+
+    >.WrapAnhGiaoDich {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        >.anhGiaoDich {
+            height: 100px;
+            width: 100px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            cursor: pointer;
+            background-image: url('../../../public/image/all/anhNoImage.jpg');
+            background-size: cover;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .TimPhong_container {
+
+        .TimPhong_content {
+
+            // display: block !important;
+            flex-direction: column;
+
+            .fromBook {
+                width: 100%;
+                top: unset;
+                bottom: 0;
+                background-color: #ccc;
+
+                .wrap_chonPhong {
+                    max-height: 400px;
+                    overflow-y: auto;
+                }
+            }
+        }
+    }
+
+
+
+}

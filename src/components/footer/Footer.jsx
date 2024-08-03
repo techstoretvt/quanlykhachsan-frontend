@@ -51,7 +51,22 @@ export default function Footer() {
                     </div>
                     <div className={styles.wrap}>
                         <Link href={'/blockchain'} className={styles.text}>
-                            Blockchain
+                            Tranfer Blockchain
+                        </Link>
+                    </div>
+                    <div className={styles.wrap}>
+                        <Link href={'/phong-blockchain'} className={styles.text}>
+                            Phòng Blockchain
+                        </Link>
+                    </div>
+                    <div className={styles.wrap}>
+                        <Link href={'/blockchain/them-phong'} className={styles.text}>
+                            Thêm phòng
+                        </Link>
+                    </div>
+                    <div className={styles.wrap}>
+                        <Link href={'/blockchain/lich-su'} className={styles.text}>
+                            Lịch sử giao dịch
                         </Link>
                     </div>
                 </div>
